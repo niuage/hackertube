@@ -1,0 +1,7 @@
+<%= form_tag "http://api.platform.dev/software", method: :get do %>
+  <%= text_field_tag :query, params[:query],
+        placeholder: "Search hackathon demo videos",
+        id: "query",
+        data: { search: "query" }
+  %>
+<% end %>
