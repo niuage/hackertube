@@ -8,6 +8,7 @@
     @listenTo App.er, "search", @update
 
   update: (query, page) ->
+    console.log query
     @software_collection.fetch
       reset: true
       data:

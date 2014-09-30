@@ -24,7 +24,7 @@
 //= require_tree ./application/views
 
 $(function() {
-  new App.Application();
+  App.Application.start();
 
   $(document).foundation();
 })

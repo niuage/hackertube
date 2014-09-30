@@ -1,7 +1,11 @@
-<%= form_tag "http://api.platform.dev/software", method: :get do %>
-  <%= text_field_tag :query, params[:query],
-        placeholder: "Search hackathon demo videos",
-        id: "query",
-        data: { search: "query" }
-  %>
-<% end %>
+<div class="large-11 columns">
+  <%= form_tag "http://api.platform.dev/software", method: :get do %>
+    <%= text_field_tag :query, params[:query],
+          placeholder: "Search hackathon demo videos",
+          id: "query",
+          data: { search: "query" },
+          autocomplete: "off",
+          spellcheck: false
+    %>
+  <% end %>
+</div>

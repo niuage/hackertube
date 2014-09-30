@@ -1,10 +1,12 @@
 @App.Router = Backbone.Router.extend
 
   routes:
-    "search": "search"
+    "search/:query": "search"
 
-  search: ->
-    console.log "hahahah"
-    App.er.trigger("search", query, page)
+  search: (query) ->
+    App.er.trigger("search", query)
 
 @App.router = new @App.Router()
+
+Backbone.history.start
+  pushState: true

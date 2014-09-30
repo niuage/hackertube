@@ -14,8 +14,7 @@
     # @trigger("change", @serializedData())
 
   submit: ->
-    console.log App.router
-    App.router.navigate "search/kikou",
+    App.router.navigate "search/#{@query()}",
       trigger: true
 
   serializedData: ->

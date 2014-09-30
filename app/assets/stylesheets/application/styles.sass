@@ -4,6 +4,165 @@
   //height: 3px
   @include background(linear-gradient(to right, #46C340 0%, #4691F6 100%))
 
-#header
+#top-bar
   background: $header-color
-  padding: 30px 0
+  position: fixed
+  top: 0
+  width: 100%
+  // background: $header-color
+  border-bottom: 1px solid $header-border-color
+  z-index: 10000
+
+  h1
+    margin: 0
+    color: white
+    font-size: 1.1em
+    font-weight: bold
+    text-transform: uppercase
+    letter-spacing: 1px
+    line-height: $header-height / 1.1
+
+    i
+      height: 1.0em
+      font-size: 0.84em
+      position: relative
+      top: -1px
+
+    span
+      border-radius: 4px
+      color: $header-color
+      background: $bright-color
+      padding: 0 0.2em
+
+  input
+    background: none
+    color: white
+    border: 0
+    font-size: 1.0em
+    margin: 0
+    height: $header-height
+    box-shadow: none
+
+#header-wrapper
+  background: $header-color image-url("bg.png") center center no-repeat
+  background-size: cover
+  padding-top: $header-height
+
+#header
+  padding: $column-gutter 0
+
+  h2, h4, p, a, h3
+    color: white
+
+  h2
+    font-size: 4em
+
+  h4
+    // font-family: Georgia
+    color: $bright-color
+    font-size: 1.5em
+    margin-bottom: 1em
+
+  p
+    font-size: 1.5em
+    margin-bottom: 2em
+
+#software-gallery
+  h3
+    height: 1.0em
+    overflow: hidden
+
+.menu
+  margin-bottom: 0
+
+  li
+    float: left
+
+    a
+      display: block
+      padding: 0 1.5em
+
+.top-menu
+  a
+    color: white
+    font-size: 0.875em
+    height: $header-height / 0.875
+    line-height: $header-height / 0.875
+    text-transform: uppercase
+    letter-spacing: 1px
+
+    &:hover
+      color: $bright-color
+
+.search-column
+  .columns
+    &:first-child
+      border-left: 1px solid $header-border-color
+
+    &:last-child
+      border-right: 1px solid $header-border-color
+
+  i
+    height: $header-height
+    line-height: $header-height
+    color: white
+
+.button
+  border: 3px solid white
+  background: none
+  padding: 1em 1.5em
+  text-transform: uppercase
+
+  &:hover
+    background: none
+    color: $bright-color
+    border-color: $bright-color
+
+.browser
+  .browser-footer
+    border-radius: 0 0 3px 3px
+    background: lighten($header-color, 15%)
+    height: 6px
+
+  .address-bar
+    border-radius: 3px 3px 0 0
+    background: lighten($header-color, 15%)
+    height: 25px
+    position: relative
+
+    &:after, &:before
+      content: ""
+      border-radius: 10px
+      height: 9px
+      width: 9px
+      position: absolute
+      top: 8px
+      left: 8px
+
+    &:before
+      z-index: 10
+      left: 25px
+      background: #C48FE8
+
+    &:after
+      background: $bright-color
+
+
+.section
+  padding: $column-gutter 0
+
+$placeholder-color: $light-header-color
+
+@mixin placeholder
+  &::-webkit-input-placeholder
+    @content
+  &:-moz-placeholder
+    @content
+  &::-moz-placeholder
+    @content
+  &:-ms-input-placeholder
+    @content
+
+input
+  @include placeholder
+    color: $light-header-color

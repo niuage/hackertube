@@ -2,9 +2,13 @@
 
 class Application
   constructor: ->
-    @software_collection_view = new App.SoftwareCollectionView()
-    @search_input_view = new App.SearchInputView()
+    @softwareCollectionView = new App.SoftwareCollectionView()
+    @searchInputView = new App.SearchInputView()
 
-    @software_collection_view.update()
+  @start: ->
+    new Application().start()
+
+  start: ->
+    @softwareCollectionView.update(@searchInputView.query())
 
 @App.Application = Application
