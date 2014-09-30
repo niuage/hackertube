@@ -42,3 +42,4 @@ gem 'spring',        group: :development
 gem 'ejs'
 
 gem 'foundation-rails'
+gem 'marionette-rails'
