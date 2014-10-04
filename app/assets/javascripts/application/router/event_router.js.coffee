@@ -1,3 +1,3 @@
-@App.eventRouter = _.extend({}, Backbone.Events)
+@HT.eventRouter = _.extend({}, Backbone.Events)
 
-@App.er = @App.eventRouter
+@HT.er = @HT.eventRouter

@@ -17,11 +17,10 @@
 //= require backbone.marionette
 //= require app
 //= require_tree ./application/router
-//= require_tree ./application/templates
-//= require_tree ./application/models
-//= require_tree ./application/collections
+//= require_tree ./templates
+//= require_tree ./entities
 //= require_tree ./application/views
 
 $(function() {
-  App.Application.start();
+  HT.start();
 })

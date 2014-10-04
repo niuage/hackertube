@@ -1,6 +1,10 @@
-<div class="large-3 columns">
+<% if(thumbnailImage) { %>
+
+<div class="large-3 columns thumbnail">
   <img src="<%= thumbnailImage %>" />
 
   <h3><%= name %></h3>
   <p><%= tagline %></p>
 </div>
+
+<% } %>

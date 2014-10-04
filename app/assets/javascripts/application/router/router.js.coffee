@@ -1,4 +1,4 @@
-@App.Router = Backbone.Router.extend
+@HT.Router = Backbone.Router.extend
 
   routes:
     "": "home"
@@ -9,6 +9,6 @@
 
   search: (query) ->
     console.log "Router: search"
-    App.er.trigger("search", query)
+    HT.er.trigger("search", query)
 
-@App.router = new @App.Router()
+@HT.router = new @HT.Router()

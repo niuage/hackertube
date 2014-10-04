@@ -1,4 +1,4 @@
-@App.SearchInputView = Backbone.View.extend
+@HT.SearchInputView = Backbone.View.extend
   el: "[data-search=query]"
 
   events:
@@ -10,11 +10,11 @@
 
   onChange: (e) ->
     return @submit() if @enterKeyPressed?(e)
-    App.er.trigger("search", @query(), @page())
+    HT.er.trigger("search", @query(), @page())
     # @trigger("change", @serializedData())
 
   submit: ->
-    App.router.navigate "search/#{@query()}",
+    HT.router.navigate "search/#{@query()}",
       trigger: true
 
   serializedData: ->

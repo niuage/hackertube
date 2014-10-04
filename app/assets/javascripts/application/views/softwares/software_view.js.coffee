@@ -1,10 +1,5 @@
-#= require "application/templates/software"
+@HT.SoftwareView = Marionette.ItemView.extend
+  template: JST["templates/software/software"]
 
-@App.SoftwareView = Backbone.View.extend
-  template: JST["application/templates/software"]
-
-  render: ->
-    @$el.html(@template(@toJSON()))
-    @
-
-  toJSON: -> @model.toViewAttributes()
+  serializeData: ->
+    @model.toViewAttributes()

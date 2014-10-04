@@ -16,48 +16,14 @@
   <body>
     <div id="loading-bar" data-loading-bar></div>
     <div id="header-wrapper">
-      <div id="top-bar">
-        <div class="row">
-          <div class="large-3 columns">
-            <h1>
-              <%= link_to root_path do %>
-              <span>H<i class="fa fa-play"></i></span> HackerTube
-              <% end %>
-            </h1>
-          </div>
-          <div class="large-5 columns">
-            <div class="row collapse search-column">
-              <div class="small-1 columns text-right">
-                <i class="fa fa-search"></i>
-              </div>
-              <%= render "searches/form" %>
-            </div>
-          </div>
-          <div class="large-4 columns">
-            <ul class="menu top-menu no-bullet right">
-              <li><%= link_to "#" do %>
-                Browse
-                <% end %>
-              </li>
-              <li><%= link_to "#" do %>
-                <span>
-                  Upload
-                </span>
-                <% end %>
-              </li>
-              <li><%= link_to "#" do %>
-                <i class="fa fa-circle-o"></i> Sign in
-                <% end %>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <header id="header">
+      <%= render "top_bar" %>
+      <header id="header" data-region="header">
         <%= yield :header %>
       </header>
     </div>
-    <%= yield %>
+    <div data-region="main">
+      <%= yield %>
+    </div>
     <%= javascript_include_tag "application" %>
   </body>
 </html>

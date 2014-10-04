@@ -1,34 +1,33 @@
-@App = {}
+@HT = new Marionette.Application()
 
-class Application
-  constructor: ->
-    @softwareCollectionView = new App.SoftwareCollectionView()
-    @searchInputView = new App.SearchInputView()
+@HT.addRegions
+  main: "[data-region=main]"
+  header: "[data-region=header]"
 
-    @captureLinks()
+@HT.on "start", (options) ->
+  Backbone.history.start(pushState: true)
 
-  @start: ->
-    new Application().start()
-    Backbone.history.start pushState: true
+  softwareCollection = new HT.Entities.SoftwareCollection()
 
-  start: ->
-    @softwareCollectionView.update(@searchInputView.query())
+  softwareCollectionView = new HT.SoftwareCollectionView
+    collection: softwareCollection
 
-  captureLinks: ->
-    $("body").on "click", "a[href^='/']", (e) ->
-      href = $(e.currentTarget).attr('href')
+  @main.show(softwareCollectionView)
 
-      # Add condition here to not capture links like Sign out later
-      passThrough = false
+# @Application.on "before:start", ->
+#   # capture links
+#   $("body").on "click", "a[href^='/']", (e) ->
+#     href = $(e.currentTarget).attr('href')
 
-      if !passThrough && !e.altKey && !e.ctrlKey && !e.metaKey && !e.shiftKey
-        e.preventDefault()
+#     # Add condition here to not capture links like Sign out later
+#     passThrough = false
 
-        url = href.replace(/^\//,'')
+#     if !passThrough && !e.altKey && !e.ctrlKey && !e.metaKey && !e.shiftKey
+#       e.preventDefault()
 
-        # Instruct Backbone to trigger routing events
-        App.router.navigate url, { trigger: true }
+#       url = href.replace(/^\//,'')
 
-        return false
+#       # Instruct Backbone to trigger routing events
+#       HT.router.navigate url, { trigger: true }
 
-@App.Application = Application
+#       return false
