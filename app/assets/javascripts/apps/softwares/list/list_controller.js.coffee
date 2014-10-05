@@ -2,7 +2,6 @@
   (List, HT, Backbone, Marionette, $, _) ->
 
     @Controller =
-
       listSoftware: ->
         softwares = HT.request("software:entities")
 

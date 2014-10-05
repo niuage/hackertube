@@ -15,9 +15,7 @@
     softwareCollection = null
 
     @getSoftwareCollection = ->
-      @softwareCollection ||
-        (@softwareCollection = new Entities.SoftwareCollection())
-
+      @softwareCollection ||= new Entities.SoftwareCollection()
 )
 
 @HT.reqres.setHandler "software:entities", ->

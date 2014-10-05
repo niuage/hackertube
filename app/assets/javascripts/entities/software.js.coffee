@@ -2,22 +2,21 @@
   (Entities, HT, Backbone, Marionette, $, _) ->
 
     @Software = Backbone.Model.extend
-      thumbnailImage: ->
+      youtubeRegexp: /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/
+
+      thumbnailVideo: (size = "mq") ->
         return unless @videoId()
-        "http://img.youtube.com/vi/#{@videoId()}/mqdefault.jpg"
+        "http://img.youtube.com/vi/#{@videoId()}/#{size}default.jpg"
+
+      thumbnailVideoHQ: ->
+        @thumbnailVideo("hq")
 
       videoId: ->
         videoUrl = @get("video_url")
         return unless videoUrl
 
-        id = switch
-          when videoUrl.match(/youtube.com\/watch\?v=/)
-            videoUrl.match(/v=(.*)/)
-          when videoUrl.match("youtu.be")
-            videoUrl.match(/.be\/(.*)/)
-
-        return unless id
-        id[1]
+        match = videoUrl.match(@youtubeRegexp)
+        match[7] if match && match[7].length == 11
 
       softwareUrl: ->
         "/project/" + @get("slug")
@@ -25,8 +24,9 @@
       toViewAttributes: ->
         _.extend(
           {
-            thumbnailImage: @thumbnailImage(),
-            softwareUrl: @softwareUrl()
+            video_thumbnail: @thumbnailVideo(),
+            video_thumbnail_hq: @thumbnailVideoHQ(),
+            software_url: @softwareUrl()
           },
           @toJSON()
         )

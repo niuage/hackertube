@@ -3,3 +3,6 @@
 
     @Software = Marionette.ItemView.extend
       template: JST["templates/software/show/software"]
+
+      serializeData: ->
+        @model.toViewAttributes()

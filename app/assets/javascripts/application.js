@@ -15,6 +15,7 @@
 //= require underscore
 //= require backbone
 //= require backbone.marionette
+//= require popcorn-custom
 //= require app
 //= require_tree ./application/router
 //= require_tree ./templates
