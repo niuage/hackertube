@@ -21,7 +21,6 @@
         @listenTo HT.er, "search", @update
 
       update: (query, page) ->
-        console.log @collection
         @collection.fetch
           reset: true
           data:

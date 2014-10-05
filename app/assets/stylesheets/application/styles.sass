@@ -55,7 +55,9 @@
 #header-wrapper
   background: $header-color image-url("bg.png") center center no-repeat
   background-size: cover
-  padding-top: $header-height
+
+  @media #{$small}
+    padding-top: $header-height
 
 #header
   padding: $column-gutter 0

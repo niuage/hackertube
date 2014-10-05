@@ -1,16 +1,13 @@
 @HT = new Marionette.Application()
 
 @HT.addRegions
-  main: "[data-region=main]"
-  header: "[data-region=header]"
+  mainRegion: "[data-region=main]"
+  headerRegion: "[data-region=header]"
 
 @HT.on "start", (options) ->
   Backbone.history.start(pushState: true)
 
-  softwareListView = new HT.SoftwareApp.List.Softwares
-    collection: HT.request("software:entities")
-
-  @main.show(softwareListView)
+  HT.SoftwareApp.List.Controller.listSoftware()
 
 # @Application.on "before:start", ->
 #   # capture links
