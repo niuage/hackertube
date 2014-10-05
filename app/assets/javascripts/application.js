@@ -18,6 +18,7 @@
 //= require app
 //= require_tree ./application/router
 //= require_tree ./templates
+//= require_tree ./apps
 //= require_tree ./entities
 //= require_tree ./application/views
 

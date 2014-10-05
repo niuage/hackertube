@@ -1,5 +1,5 @@
 @HT.module "Entities",
-  (Entities, ContactManager, Backbone, Marionette, $, _) ->
+  (Entities, HT, Backbone, Marionette, $, _) ->
 
     @Software = Backbone.Model.extend
       thumbnailImage: ->

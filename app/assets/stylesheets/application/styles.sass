@@ -2,16 +2,20 @@
 
 #loading-bar
   //height: 3px
-  @include background(linear-gradient(to right, #46C340 0%, #4691F6 100%))
+  @include background(linear-gradient(to right, $bright-color 0%, #4691F6 100%))
+  position: relative
+  z-index: 10001
 
 #top-bar
   background: $header-color
-  position: fixed
-  top: 0
-  width: 100%
   // background: $header-color
   border-bottom: 1px solid $header-border-color
-  z-index: 10000
+
+  @media #{$small}
+    z-index: 10000
+    position: fixed
+    top: 0
+    width: 100%
 
   a
     color: white

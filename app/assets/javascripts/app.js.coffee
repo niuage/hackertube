@@ -7,12 +7,10 @@
 @HT.on "start", (options) ->
   Backbone.history.start(pushState: true)
 
-  softwareCollection = new HT.Entities.SoftwareCollection()
+  softwareListView = new HT.SoftwareApp.List.Softwares
+    collection: HT.request("software:entities")
 
-  softwareCollectionView = new HT.SoftwareCollectionView
-    collection: softwareCollection
-
-  @main.show(softwareCollectionView)
+  @main.show(softwareListView)
 
 # @Application.on "before:start", ->
 #   # capture links

@@ -1,7 +1,5 @@
 #= require ./software
 
-console.log HT.Entities.Software
-
 @HT.module(
   "Entities",
   (Entities, ContactManager, Backbone, Marionette, $, _) ->
@@ -13,4 +11,14 @@ console.log HT.Entities.Software
 
       parse: (response) ->
         response.software
+
+    softwareCollection = null
+
+    @getSoftwareCollection = ->
+      @softwareCollection ||
+        (@softwareCollection = new Entities.SoftwareCollection())
+
 )
+
+@HT.reqres.setHandler "software:entities", ->
+  @HT.Entities.getSoftwareCollection()
