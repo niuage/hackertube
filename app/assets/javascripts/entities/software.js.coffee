@@ -19,8 +19,14 @@
         return unless id
         id[1]
 
+      softwareUrl: ->
+        "/project/" + @get("slug")
+
       toViewAttributes: ->
         _.extend(
-          { thumbnailImage: @thumbnailImage() },
+          {
+            thumbnailImage: @thumbnailImage(),
+            softwareUrl: @softwareUrl()
+          },
           @toJSON()
         )

@@ -1,14 +1,27 @@
 @HT.module "SoftwareApp.List",
   (List, HT, Backbone, Marionette, $, _) ->
 
-    # Software Item View
+    ######################
+    # Software Item View #
+    ######################
     @Software = Marionette.ItemView.extend
-      template: JST["templates/software/software"]
+      template: JST["templates/software/list/software"]
+
+      events:
+        click: "onClick"
+
+      onClick: (e) ->
+        e.preventDefault()
+        # e.stopPropagation()
+        console.log "software:show", @model
+        @trigger("software:show", @model)
 
       serializeData: ->
         @model.toViewAttributes()
 
-    # Software Collection View
+    ############################
+    # Software Collection View #
+    ############################
     @Softwares = Marionette.CollectionView.extend
       childView: List.Software
 
