@@ -13,7 +13,6 @@
       onClick: (e) ->
         e.preventDefault()
         # e.stopPropagation()
-        console.log "software:show", @model
         @trigger("software:show", @model)
 
       serializeData: ->
@@ -25,13 +24,11 @@
     @Softwares = Marionette.CollectionView.extend
       childView: List.Software
 
-      el: "#software-gallery"
+      className: "software-gallery row"
 
-      initialize: ->
-        @listenTo @collection, "reset", @render
-        @update()
-
-        @listenTo HT.er, "search", @update
+      # initialize: ->
+        # @listenTo @collection, "reset", @render
+        # @update()
 
       update: (query, page) ->
         @collection.fetch

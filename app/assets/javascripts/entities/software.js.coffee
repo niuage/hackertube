@@ -2,6 +2,14 @@
   (Entities, HT, Backbone, Marionette, $, _) ->
 
     @Software = Backbone.Model.extend
+      defaults:
+        tagline: ""
+
+      idAttribute: "slug"
+
+      url: ->
+        "http://api.platform.dev/#{@softwarePath()}"
+
       youtubeRegexp: /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/
 
       thumbnailVideo: (size = "mq") ->
@@ -18,15 +26,33 @@
         match = videoUrl.match(@youtubeRegexp)
         match[7] if match && match[7].length == 11
 
-      softwareUrl: ->
-        "/project/" + @get("slug")
+      softwarePath: ->
+        "/software/" + @get("slug")
 
       toViewAttributes: ->
         _.extend(
           {
             video_thumbnail: @thumbnailVideo(),
             video_thumbnail_hq: @thumbnailVideoHQ(),
-            software_url: @softwareUrl()
+            software_url: @softwarePath()
           },
           @toJSON()
         )
+
+      parse: (response) ->
+        return response.software if response.software
+        response
+
+    @getSoftware = (slug) ->
+      software = new Entities.Software(slug: slug)
+      defer = $.Deferred()
+
+      software.fetch
+        success: (data) -> defer.resolve(data)
+        error:          -> defer.resolve(undefined)
+
+      defer.promise()
+
+
+@HT.reqres.setHandler "software:entity", (slug) ->
+  @HT.Entities.getSoftware(slug)

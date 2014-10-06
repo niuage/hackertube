@@ -3,13 +3,25 @@
 
     @Router = Marionette.AppRouter.extend
       appRoutes:
-        software: ""
+        software: "listSoftware"
+        "software/:slug": "showSoftware"
 
     API =
       listSoftware: ->
-        console.log "LIST SOFTWARE"
+        SoftwareApp.List.Controller.listSoftware()
+
+      showSoftware: (slug) ->
+        SoftwareApp.Show.Controller.showSoftware(slug)
 
     HT.addInitializer ->
       new SoftwareApp.Router(
         controller: API
       )
+
+    HT.on "software:list", ->
+      HT.navigate("software")
+      API.listSoftware()
+
+    HT.on "software:show", (slug) ->
+      HT.navigate "software/#{slug}"
+      API.showSoftware(slug)

@@ -15,7 +15,17 @@
     softwareCollection = null
 
     @getSoftwareCollection = ->
-      @softwareCollection ||= new Entities.SoftwareCollection()
+      softwareCollection = new Entities.SoftwareCollection()
+      defer = $.Deferred()
+
+      softwareCollection.fetch
+        reset: true
+        success: (data) ->
+          console.log data
+          defer.resolve(data)
+        error:          -> defer.resolve(undefined)
+
+      defer.promise()
 )
 
 @HT.reqres.setHandler "software:entities", ->

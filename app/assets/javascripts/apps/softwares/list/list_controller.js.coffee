@@ -3,11 +3,14 @@
 
     @Controller =
       listSoftware: ->
-        softwares = HT.request("software:entities")
+        softwaresRequest = HT.request("software:entities")
 
-        softwareListView = new List.Softwares { collection: softwares }
+        $.when(softwaresRequest).done (softwares) ->
+          softwareListView = new List.Softwares(
+            collection: softwares
+          )
 
-        softwareListView.on "childview:software:show", (childView, model) ->
-          HT.SoftwareApp.Show.Controller.showSoftware(model)
+          softwareListView.on "childview:software:show", (childView, model) ->
+            HT.trigger("software:show", model.get("slug"))
 
-        HT.mainRegion.show(softwareListView)
+          HT.mainRegion.show(softwareListView)

@@ -7,7 +7,15 @@
 @HT.on "start", (options) ->
   Backbone.history.start(pushState: true)
 
-  HT.SoftwareApp.List.Controller.listSoftware()
+  if @getCurrentRoute() == ""
+    HT.trigger("software:list")
+
+@HT.navigate = (route, options) ->
+  options ||= {}
+  Backbone.history.navigate(route, options)
+
+@HT.getCurrentRoute = ->
+  return Backbone.history.fragment
 
 # @Application.on "before:start", ->
 #   # capture links
