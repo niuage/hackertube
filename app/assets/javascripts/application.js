@@ -20,6 +20,7 @@
 //= require spin.jquery
 //= require app
 //= require_tree ./templates
+//= require_tree ./common
 //= require_tree ./apps
 //= require_tree ./entities
 

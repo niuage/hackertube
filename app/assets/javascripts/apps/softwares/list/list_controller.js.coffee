@@ -3,6 +3,8 @@
 
     @Controller =
       listSoftware: ->
+        HT.mainRegion.show(new HT.Common.Views.Loading())
+
         softwaresRequest = HT.request("software:entities")
 
         $.when(softwaresRequest).done (softwares) ->

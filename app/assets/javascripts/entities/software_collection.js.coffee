@@ -20,9 +20,7 @@
 
       softwareCollection.fetch
         reset: true
-        success: (data) ->
-          console.log data
-          defer.resolve(data)
+        success: (data) -> defer.resolve(data)
         error:          -> defer.resolve(undefined)
 
       defer.promise()

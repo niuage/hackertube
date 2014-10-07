@@ -3,6 +3,8 @@ HT.module "SoftwareApp.Show",
 
     @Controller =
       showSoftware: (slug) ->
+        HT.mainRegion.show(new HT.Common.Views.Loading())
+
         modelRequest = HT.request("software:entity", slug)
 
         $.when(modelRequest).done (software) ->
