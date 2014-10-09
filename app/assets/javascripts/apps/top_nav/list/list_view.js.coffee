@@ -5,9 +5,25 @@
       template: JST["templates/top_nav/top_nav_link"]
       tagName: "li"
 
-    @TopNav = Marionette.CompositeView.extend
-      template: JST["templates/top_nav/top_nav"]
-      itemView: List.TopNavItem
-      itemViewContainer: ".top-menu"
+      events:
+        click: "navigate"
 
-      onShow: -> console.log "lol"
+      navigate: (e) ->
+        e.preventDefault()
+        @trigger("navigate", @model)
+
+      onRender: ->
+        if @model.selected
+          @$el.addClass("current")
+
+    @TopNav = Marionette.CompositeView.extend
+      template: JST["templates/top_nav/top_nav"],
+      childView: List.TopNavItem,
+      childViewContainer: "ul"
+
+      events:
+        "click h1 a": "titleClicked"
+
+      titleClicked: (e) ->
+        e.preventDefault()
+        @trigger("title:clicked")

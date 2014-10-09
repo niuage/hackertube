@@ -6,7 +6,7 @@
         TopNavApp.List.Controller.listTopNav()
 
     HT.commands.setHandler "set:active:topNavItem", (name) ->
-      HT.TopNavApp.List.Controller.setActiveHeader(name)
+      HT.TopNavApp.List.Controller.setCurrentNavItem(name)
 
     TopNavApp.on "start", ->
       API.listTopNav()

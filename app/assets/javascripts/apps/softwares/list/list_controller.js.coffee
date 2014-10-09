@@ -3,6 +3,7 @@
 
     @Controller =
       listSoftware: ->
+        HT.headerRegion.reset()
         HT.mainRegion.show(new HT.Common.Views.Loading())
 
         softwaresRequest = HT.request("software:entities")

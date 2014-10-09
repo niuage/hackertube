@@ -10,12 +10,15 @@
     API =
       indexSoftware: ->
         SoftwareApp.List.Controller.indexSoftware()
+        HT.execute("set:active:topNavItem", "")
 
       listSoftware: ->
         SoftwareApp.List.Controller.listSoftware()
+        HT.execute("set:active:topNavItem", "software")
 
       showSoftware: (slug) ->
         SoftwareApp.Show.Controller.showSoftware(slug)
+        HT.execute("set:active:topNavItem", "software")
 
     HT.addInitializer ->
       new SoftwareApp.Router(
