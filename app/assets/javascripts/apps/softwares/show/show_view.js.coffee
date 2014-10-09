@@ -19,3 +19,6 @@
 
       serializeData: ->
         @model.toViewAttributes()
+
+    @FeaturedSoftware = Marionette.ItemView.extend
+      template: JST["templates/software/featured/software"]

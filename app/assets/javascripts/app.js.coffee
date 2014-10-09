@@ -3,12 +3,10 @@
 @HT.addRegions
   mainRegion: "[data-region=main]"
   headerRegion: "[data-region=header]"
+  topNavRegion: '[data-region="top-nav"]'
 
 @HT.on "start", (options) ->
   Backbone.history.start(pushState: true)
-
-  if @getCurrentRoute() == ""
-    HT.trigger("software:list")
 
 @HT.navigate = (route, options) ->
   options ||= {}

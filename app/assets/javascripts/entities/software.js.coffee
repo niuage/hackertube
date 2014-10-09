@@ -43,6 +43,10 @@
         return response.software if response.software
         response
 
+    @FeaturedSoftware = @Software.extend
+      softwarePath: ->
+        "/software/likeapro"
+
     @getSoftware = (slug) ->
       software = new Entities.Software(slug: slug)
       defer = $.Deferred()
@@ -53,6 +57,18 @@
 
       defer.promise()
 
+    @getFeaturedSoftware = (slug) ->
+      software = new Entities.FeaturedSoftware()
+      defer = $.Deferred()
+
+      software.fetch
+        success: (data) -> defer.resolve(data)
+        error:          -> defer.resolve(undefined)
+
+      defer.promise()
 
 @HT.reqres.setHandler "software:entity", (slug) ->
   @HT.Entities.getSoftware(slug)
+
+@HT.reqres.setHandler "software:featured:entity", ->
+  @HT.Entities.getFeaturedSoftware()

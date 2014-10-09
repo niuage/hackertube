@@ -16,7 +16,8 @@
   <body>
     <div id="loading-bar" data-loading-bar></div>
     <div id="header-wrapper">
-      <%= render "top_bar" %>
+      <div data-region="top-nav" id="top-bar">
+      </div>
       <header id="header" data-region="header">
         <%= yield :header %>
       </header>

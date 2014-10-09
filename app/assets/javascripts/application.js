@@ -15,6 +15,7 @@
 //= require underscore
 //= require backbone
 //= require backbone.marionette
+//= require backbone.picky
 //= require popcorn-custom
 //= require spin
 //= require spin.jquery
