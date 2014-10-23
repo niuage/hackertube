@@ -33,4 +33,5 @@
         @model.toViewAttributes()
 
     @FeaturedSoftware = Marionette.ItemView.extend
+      className: "headerContent"
       template: JST["templates/software/featured/software"]

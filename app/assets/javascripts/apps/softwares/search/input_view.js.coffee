@@ -1,3 +1,11 @@
+#
+#
+#
+# OLD and mostly unused
+#
+#
+#
+
 @HT.SearchInputView = Backbone.View.extend
   el: "[data-search=query]"
 
